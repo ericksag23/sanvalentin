@@ -27,7 +27,6 @@ body {
   animation: fadeIn 2s ease;
 }
 
-/* 💖 NOMBRE ANIMADO */
 .name {
   font-size: 28px;
   font-weight: bold;
@@ -37,23 +36,9 @@ body {
 }
 
 @keyframes glow {
-  0% {
-    transform: scale(1);
-    text-shadow: 0 0 5px #ff9ab5;
-  }
-  50% {
-    transform: scale(1.08);
-    text-shadow: 0 0 15px #ff4d6d;
-  }
-  100% {
-    transform: scale(1);
-    text-shadow: 0 0 5px #ff9ab5;
-  }
-}
-
-h1 {
-  color: #ff3366;
-  font-size: 30px;
+  0% { transform: scale(1); text-shadow: 0 0 5px #ff9ab5; }
+  50% { transform: scale(1.08); text-shadow: 0 0 15px #ff4d6d; }
+  100% { transform: scale(1); text-shadow: 0 0 5px #ff9ab5; }
 }
 
 p {
@@ -66,6 +51,11 @@ p {
   font-size: 55px;
   margin: 20px 0;
   animation: beat 1s infinite;
+}
+
+@keyframes beat {
+  0%,100% { transform: scale(1); }
+  50% { transform: scale(1.25); }
 }
 
 .buttons {
@@ -88,10 +78,6 @@ button {
   color: white;
 }
 
-#yes:hover {
-  transform: scale(1.1);
-}
-
 #no {
   background: #ccc;
   position: absolute;
@@ -106,12 +92,23 @@ button {
 .fade-out {
   opacity: 0;
   transform: scale(0.8);
-  transition: all 0.5s ease;
+  transition: all 0.6s ease;
 }
 
-@keyframes beat {
-  0%,100% { transform: scale(1); }
-  50% { transform: scale(1.25); }
+/* 💌 MENSAJE FINAL */
+.final-message {
+  display: none;
+  animation: fadeIn 2s ease;
+}
+
+.final-message h1 {
+  color: #ff3366;
+  font-size: 30px;
+}
+
+.final-message p {
+  font-size: 18px;
+  margin-top: 15px;
 }
 
 @keyframes fadeIn {
@@ -127,39 +124,51 @@ button {
   <source src="musica.mp3" type="audio/mpeg">
 </audio>
 
-<div class="card">
+<div class="card" id="card">
 
   <div class="name">
     Sofia <br>
     <span style="font-size:18px;">(Mi Niña Hermosa)</span>
   </div>
 
-  <p>
-    Desde que llegaste, todo se siente más bonito.
-    Tu risa, tu forma de ser y cada momento contigo
-    se volvieron mi lugar favorito.
-  </p>
+  <div id="mainContent">
+    <p>
+      Desde que llegaste, todo se siente más bonito.
+      Tu risa y cada momento contigo
+      se volvieron mi lugar favorito.
+    </p>
 
-  <p>
-    Este San Valentín no quiero un día cualquiera,
-    quiero un recuerdo contigo.
-  </p>
+    <p>
+      Este San Valentín no quiero un día cualquiera,
+      quiero compartirlo contigo.
+    </p>
 
-  <div class="heart">❤️</div>
+    <div class="heart">❤️</div>
 
-  <p><strong>¿Quieres ser mi San Valentín?</strong></p>
+    <p><strong>¿Quieres ser mi San Valentín?</strong></p>
 
-  <div class="buttons">
-    <button id="yes" onclick="alert('Sabía que dirías que sí 💘🥰')">
-      Sí 💖
+    <div class="buttons">
+      <button id="yes" onclick="sayYes()">Sí 💖</button>
+      <button id="no">No 💔</button>
+    </div>
+
+    <button id="musicBtn" onclick="playMusic()">
+      🎵 Reproducir música
     </button>
-
-    <button id="no">No 💔</button>
   </div>
 
-  <button id="musicBtn" onclick="playMusic()">
-    🎵 Reproducir música
-  </button>
+  <!-- 💖 MENSAJE FINAL -->
+  <div class="final-message" id="finalMessage">
+    <h1>Gracias por decir que sí 💘</h1>
+    <p>
+      Prometo cuidarte, hacerte reír,
+      y recordarte todos los días
+      lo especial que eres para mí.
+    </p>
+    <div class="heart">❤️</div>
+    <p><strong>Feliz San Valentín, mi amor.</strong></p>
+  </div>
+
 </div>
 
 <script>
@@ -181,5 +190,21 @@ noBtn.addEventListener("touchstart", (e) => {
 });
 
 function playMusic() {
-  const music = document.getEl
+  const music = document.getElementById("music");
+  const btn = document.getElementById("musicBtn");
+  music.play();
+  btn.classList.add("fade-out");
+  setTimeout(() => btn.style.display = "none", 600);
+}
 
+function sayYes() {
+  document.getElementById("mainContent").classList.add("fade-out");
+  setTimeout(() => {
+    document.getElementById("mainContent").style.display = "none";
+    document.getElementById("finalMessage").style.display = "block";
+  }, 600);
+}
+</script>
+
+</body>
+</html>
