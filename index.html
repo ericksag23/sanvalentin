@@ -27,6 +27,30 @@ body {
   animation: fadeIn 2s ease;
 }
 
+/* 💖 NOMBRE ANIMADO */
+.name {
+  font-size: 28px;
+  font-weight: bold;
+  color: #ff3366;
+  margin-bottom: 15px;
+  animation: glow 2.5s infinite ease-in-out;
+}
+
+@keyframes glow {
+  0% {
+    transform: scale(1);
+    text-shadow: 0 0 5px #ff9ab5;
+  }
+  50% {
+    transform: scale(1.08);
+    text-shadow: 0 0 15px #ff4d6d;
+  }
+  100% {
+    transform: scale(1);
+    text-shadow: 0 0 5px #ff9ab5;
+  }
+}
+
 h1 {
   color: #ff3366;
   font-size: 30px;
@@ -104,17 +128,21 @@ button {
 </audio>
 
 <div class="card">
-  <h1>Mi amor 💕</h1>
+
+  <div class="name">
+    Sofia <br>
+    <span style="font-size:18px;">(Mi Niña Hermosa)</span>
+  </div>
 
   <p>
     Desde que llegaste, todo se siente más bonito.
-    Tu risa, tu mirada y cada momento contigo
+    Tu risa, tu forma de ser y cada momento contigo
     se volvieron mi lugar favorito.
   </p>
 
   <p>
-    Este San Valentín no quiero flores al azar,
-    quiero compartirlo contigo.
+    Este San Valentín no quiero un día cualquiera,
+    quiero un recuerdo contigo.
   </p>
 
   <div class="heart">❤️</div>
@@ -153,17 +181,5 @@ noBtn.addEventListener("touchstart", (e) => {
 });
 
 function playMusic() {
-  const music = document.getElementById("music");
-  const btn = document.getElementById("musicBtn");
+  const music = document.getEl
 
-  music.play();
-  btn.classList.add("fade-out");
-
-  setTimeout(() => {
-    btn.style.display = "none";
-  }, 500);
-}
-</script>
-
-</body>
-</html>
