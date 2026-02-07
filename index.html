@@ -181,4 +181,25 @@ function moveButton() {
   noBtn.style.transform = `translate(${x}px, ${y}px)`;
 }
 
-noBtn.addEventLi
+noBtn.addEventListener("mouseover", moveButton);
+noBtn.addEventListener("touchstart", (e) => {
+  e.preventDefault();
+  moveButton();
+});
+
+/* Música */
+function playMusic() {
+  document.getElementById("music").play();
+  document.getElementById("musicBtn").style.display = "none";
+}
+
+/* Ir a página final */
+function goToFinal() {
+  document.getElementById("page1").style.display = "none";
+  document.body.style.background = "linear-gradient(135deg, #4c1d95, #7c3aed)";
+  document.getElementById("page2").style.display = "block";
+}
+</script>
+
+</body>
+</html>
