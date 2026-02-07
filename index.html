@@ -3,20 +3,22 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>¿Quieres ser mi San Valentín?</title>
+<title>Para Sofia 💜</title>
 
 <style>
 body {
   margin: 0;
   height: 100vh;
-  background: linear-gradient(135deg, #ff758c, #ff7eb3);
+  background: linear-gradient(135deg, #6a4cff, #a78bfa);
   display: flex;
   justify-content: center;
   align-items: center;
   font-family: 'Georgia', serif;
   overflow: hidden;
+  transition: background 1s ease;
 }
 
+/* -------- PÁGINA 1 -------- */
 .card {
   background: rgba(255,255,255,0.95);
   padding: 40px;
@@ -30,15 +32,15 @@ body {
 .name {
   font-size: 28px;
   font-weight: bold;
-  color: #ff3366;
+  color: #6a4cff;
   margin-bottom: 15px;
-  animation: glow 2.5s infinite ease-in-out;
+  animation: glow 2.5s infinite;
 }
 
 @keyframes glow {
-  0% { transform: scale(1); text-shadow: 0 0 5px #ff9ab5; }
-  50% { transform: scale(1.08); text-shadow: 0 0 15px #ff4d6d; }
-  100% { transform: scale(1); text-shadow: 0 0 5px #ff9ab5; }
+  0% { transform: scale(1); text-shadow: 0 0 6px #c4b5fd; }
+  50% { transform: scale(1.1); text-shadow: 0 0 18px #7c3aed; }
+  100% { transform: scale(1); text-shadow: 0 0 6px #c4b5fd; }
 }
 
 p {
@@ -74,7 +76,7 @@ button {
 }
 
 #yes {
-  background: #ff3366;
+  background: #7c3aed;
   color: white;
 }
 
@@ -85,30 +87,27 @@ button {
 
 #musicBtn {
   margin-top: 25px;
-  background: #ff85a2;
+  background: #8b5cf6;
   color: white;
 }
 
-.fade-out {
-  opacity: 0;
-  transform: scale(0.8);
-  transition: all 0.6s ease;
-}
-
-/* 💌 MENSAJE FINAL */
-.final-message {
+/* -------- PÁGINA 2 -------- */
+.final-page {
   display: none;
+  text-align: center;
+  color: white;
   animation: fadeIn 2s ease;
 }
 
-.final-message h1 {
-  color: #ff3366;
-  font-size: 30px;
+.final-name {
+  font-size: 34px;
+  font-weight: bold;
+  animation: glow 2.5s infinite;
 }
 
-.final-message p {
-  font-size: 18px;
-  margin-top: 15px;
+.final-page p {
+  font-size: 20px;
+  margin-top: 20px;
 }
 
 @keyframes fadeIn {
@@ -124,87 +123,62 @@ button {
   <source src="musica.mp3" type="audio/mpeg">
 </audio>
 
-<div class="card" id="card">
+<!-- 💌 PÁGINA 1 -->
+<div class="card" id="page1">
 
   <div class="name">
     Sofia <br>
     <span style="font-size:18px;">(Mi Niña Hermosa)</span>
   </div>
 
-  <div id="mainContent">
-    <p>
-      Desde que llegaste, todo se siente más bonito.
-      Tu risa y cada momento contigo
-      se volvieron mi lugar favorito.
-    </p>
+  <p>
+    Desde que llegaste a mi vida,
+    todo se siente más bonito y más real.
+  </p>
 
-    <p>
-      Este San Valentín no quiero un día cualquiera,
-      quiero compartirlo contigo.
-    </p>
+  <p>
+    Este San Valentín no quiero un día cualquiera…
+    quiero que sea contigo.
+  </p>
 
-    <div class="heart">❤️</div>
+  <div class="heart">❤️</div>
 
-    <p><strong>¿Quieres ser mi San Valentín?</strong></p>
+  <p><strong>¿Quieres ser mi San Valentín?</strong></p>
 
-    <div class="buttons">
-      <button id="yes" onclick="sayYes()">Sí 💖</button>
-      <button id="no">No 💔</button>
-    </div>
-
-    <button id="musicBtn" onclick="playMusic()">
-      🎵 Reproducir música
-    </button>
+  <div class="buttons">
+    <button id="yes" onclick="goToFinal()">Sí 💜</button>
+    <button id="no">No 💔</button>
   </div>
 
-  <!-- 💖 MENSAJE FINAL -->
-  <div class="final-message" id="finalMessage">
-    <h1>Gracias por decir que sí 💘</h1>
-    <p>
-      Prometo cuidarte, hacerte reír,
-      y recordarte todos los días
-      lo especial que eres para mí.
-    </p>
-    <div class="heart">❤️</div>
-    <p><strong>Feliz San Valentín, mi amor.</strong></p>
+  <button id="musicBtn" onclick="playMusic()">🎵 Reproducir música</button>
+</div>
+
+<!-- 💖 PÁGINA 2 -->
+<div class="final-page" id="page2">
+  <div class="final-name">
+    Sofia 💜<br>
+    <span style="font-size:20px;">Mi Niña Hermosa</span>
   </div>
 
+  <p>
+    Gracias por decir que sí.<br>
+    Prometo cuidarte, respetarte<br>
+    y elegirte todos los días.
+  </p>
+
+  <div class="heart">💜</div>
+
+  <p><strong>Feliz San Valentín, mi amor.</strong></p>
 </div>
 
 <script>
 const noBtn = document.getElementById("no");
 
+/* Botón que huye */
 function moveButton() {
   const x = Math.random() * 240 - 120;
   const y = Math.random() * 140 - 70;
   noBtn.style.transform = `translate(${x}px, ${y}px)`;
 }
 
-/* PC */
-noBtn.addEventListener("mouseover", moveButton);
-
-/* TELÉFONO */
-noBtn.addEventListener("touchstart", (e) => {
-  e.preventDefault();
-  moveButton();
-});
-
-function playMusic() {
-  const music = document.getElementById("music");
-  const btn = document.getElementById("musicBtn");
-  music.play();
-  btn.classList.add("fade-out");
-  setTimeout(() => btn.style.display = "none", 600);
-}
-
-function sayYes() {
-  document.getElementById("mainContent").classList.add("fade-out");
-  setTimeout(() => {
-    document.getElementById("mainContent").style.display = "none";
-    document.getElementById("finalMessage").style.display = "block";
-  }, 600);
-}
-</script>
-
-</body>
-</html>
+noBtn.addEventLi
