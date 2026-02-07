@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>¿Quieres ser mi San Valentín?</title>
+
+<style>
+body {
+  margin: 0;
+  height: 100vh;
+  background: linear-gradient(135deg, #ff758c, #ff7eb3);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: 'Georgia', serif;
+  overflow: hidden;
+}
+
+.card {
+  background: rgba(255,255,255,0.95);
+  padding: 40px;
+  border-radius: 25px;
+  max-width: 90%;
+  text-align: center;
+  box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+  animation: fadeIn 2s ease;
+}
+
+h1 {
+  color: #ff3366;
+  font-size: 30px;
+}
+
+p {
+  font-size: 17px;
+  color: #444;
+  line-height: 1.7;
+}
+
+.heart {
+  font-size: 55px;
+  margin: 20px 0;
+  animation: beat 1s infinite;
+}
+
+.buttons {
+  margin-top: 25px;
+  position: relative;
+  height: 90px;
+}
+
+button {
+  padding: 14px 28px;
+  font-size: 16px;
+  border-radius: 30px;
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+#yes {
+  background: #ff3366;
+  color: white;
+}
+
+#yes:hover {
+  transform: scale(1.1);
+}
+
+#no {
+  background: #ccc;
+  position: absolute;
+}
+
+#musicBtn {
+  margin-top: 25px;
+  background: #ff85a2;
+  color: white;
+}
+
+.fade-out {
+  opacity: 0;
+  transform: scale(0.8);
+  transition: all 0.5s ease;
+}
+
+@keyframes beat {
+  0%,100% { transform: scale(1); }
+  50% { transform: scale(1.25); }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(30px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+</style>
+</head>
+
+<body>
+
+<audio id="music" loop>
+  <source src="musica.mp3" type="audio/mpeg">
+</audio>
+
+<div class="card">
+  <h1>Mi amor 💕</h1>
+
+  <p>
+    Desde que llegaste, todo se siente más bonito.
+    Tu risa, tu mirada y cada momento contigo
+    se volvieron mi lugar favorito.
+  </p>
+
+  <p>
+    Este San Valentín no quiero flores al azar,
+    quiero compartirlo contigo.
+  </p>
+
+  <div class="heart">❤️</div>
+
+  <p><strong>¿Quieres ser mi San Valentín?</strong></p>
+
+  <div class="buttons">
+    <button id="yes" onclick="alert('Sabía que dirías que sí 💘🥰')">
+      Sí 💖
+    </button>
+
+    <button id="no">No 💔</button>
+  </div>
+
+  <button id="musicBtn" onclick="playMusic()">
+    🎵 Reproducir música
+  </button>
+</div>
+
+<script>
+const noBtn = document.getElementById("no");
+
+function moveButton() {
+  const x = Math.random() * 240 - 120;
+  const y = Math.random() * 140 - 70;
+  noBtn.style.transform = `translate(${x}px, ${y}px)`;
+}
+
+/* PC */
+noBtn.addEventListener("mouseover", moveButton);
+
+/* TELÉFONO */
+noBtn.addEventListener("touchstart", (e) => {
+  e.preventDefault();
+  moveButton();
+});
+
+function playMusic() {
+  const music = document.getElementById("music");
+  const btn = document.getElementById("musicBtn");
+
+  music.play();
+  btn.classList.add("fade-out");
+
+  setTimeout(() => {
+    btn.style.display = "none";
+  }, 500);
+}
+</script>
+
+</body>
+</html>
