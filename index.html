@@ -9,7 +9,7 @@
 body {
   margin: 0;
   height: 100vh;
-  background: linear-gradient(135deg, #6a4cff, #a78bfa);
+  background: linear-gradient(135deg, #2e1065, #4c1d95);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -20,27 +20,27 @@ body {
 
 /* -------- PÁGINA 1 -------- */
 .card {
-  background: rgba(255,255,255,0.95);
+  background: rgba(255,255,255,0.96);
   padding: 40px;
   border-radius: 25px;
   max-width: 90%;
   text-align: center;
-  box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+  box-shadow: 0 25px 45px rgba(0,0,0,0.35);
   animation: fadeIn 2s ease;
 }
 
 .name {
   font-size: 28px;
   font-weight: bold;
-  color: #6a4cff;
+  color: #4c1d95;
   margin-bottom: 15px;
-  animation: glow 2.5s infinite;
+  animation: glow 3s infinite;
 }
 
 @keyframes glow {
-  0% { transform: scale(1); text-shadow: 0 0 6px #c4b5fd; }
-  50% { transform: scale(1.1); text-shadow: 0 0 18px #7c3aed; }
-  100% { transform: scale(1); text-shadow: 0 0 6px #c4b5fd; }
+  0% { transform: scale(1); text-shadow: 0 0 4px #c7b6ff; }
+  50% { transform: scale(1.07); text-shadow: 0 0 14px #6d28d9; }
+  100% { transform: scale(1); text-shadow: 0 0 4px #c7b6ff; }
 }
 
 p {
@@ -50,14 +50,14 @@ p {
 }
 
 .heart {
-  font-size: 55px;
+  font-size: 52px;
   margin: 20px 0;
-  animation: beat 1s infinite;
+  animation: beat 1.2s infinite;
 }
 
 @keyframes beat {
   0%,100% { transform: scale(1); }
-  50% { transform: scale(1.25); }
+  50% { transform: scale(1.2); }
 }
 
 .buttons {
@@ -76,18 +76,22 @@ button {
 }
 
 #yes {
-  background: #7c3aed;
+  background: #6d28d9;
   color: white;
 }
 
+#yes:hover {
+  transform: scale(1.08);
+}
+
 #no {
-  background: #ccc;
+  background: #d1d5db;
   position: absolute;
 }
 
 #musicBtn {
   margin-top: 25px;
-  background: #8b5cf6;
+  background: #5b21b6;
   color: white;
 }
 
@@ -95,23 +99,24 @@ button {
 .final-page {
   display: none;
   text-align: center;
-  color: white;
+  color: #f5f3ff;
   animation: fadeIn 2s ease;
 }
 
 .final-name {
   font-size: 34px;
   font-weight: bold;
-  animation: glow 2.5s infinite;
+  animation: glow 3s infinite;
 }
 
 .final-page p {
   font-size: 20px;
   margin-top: 20px;
+  line-height: 1.6;
 }
 
 @keyframes fadeIn {
-  from { opacity: 0; transform: translateY(30px); }
+  from { opacity: 0; transform: translateY(35px); }
   to { opacity: 1; transform: translateY(0); }
 }
 </style>
@@ -133,15 +138,16 @@ button {
 
   <p>
     Desde que llegaste a mi vida,
-    todo se siente más bonito y más real.
+    todo se volvió más tranquilo,
+    más bonito, más tú.
   </p>
 
   <p>
-    Este San Valentín no quiero un día cualquiera…
-    quiero que sea contigo.
+    Este San Valentín no quiero algo común,
+    quiero compartirlo contigo.
   </p>
 
-  <div class="heart">❤️</div>
+  <div class="heart">💜</div>
 
   <p><strong>¿Quieres ser mi San Valentín?</strong></p>
 
@@ -163,7 +169,7 @@ button {
   <p>
     Gracias por decir que sí.<br>
     Prometo cuidarte, respetarte<br>
-    y elegirte todos los días.
+    y elegirte incluso en los días tranquilos.
   </p>
 
   <div class="heart">💜</div>
@@ -174,7 +180,6 @@ button {
 <script>
 const noBtn = document.getElementById("no");
 
-/* Botón que huye */
 function moveButton() {
   const x = Math.random() * 240 - 120;
   const y = Math.random() * 140 - 70;
@@ -187,16 +192,15 @@ noBtn.addEventListener("touchstart", (e) => {
   moveButton();
 });
 
-/* Música */
 function playMusic() {
   document.getElementById("music").play();
   document.getElementById("musicBtn").style.display = "none";
 }
 
-/* Ir a página final */
 function goToFinal() {
   document.getElementById("page1").style.display = "none";
-  document.body.style.background = "linear-gradient(135deg, #4c1d95, #7c3aed)";
+  document.body.style.background =
+    "linear-gradient(135deg, #1e0936, #3b0a75)";
   document.getElementById("page2").style.display = "block";
 }
 </script>
