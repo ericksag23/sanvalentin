@@ -3,210 +3,186 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Para Mi mujercita 💝</title>
+<title>Para mi mujercita hermosa💝</title>
 
 <style>
-body {
-  margin: 0;
-  height: 100vh;
-  background: linear-gradient(135deg, #2e1065, #4c1d95);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-family: 'Georgia', serif;
-  overflow: hidden;
-  transition: background 1s ease;
+body{
+    margin:0;
+    font-family: 'Georgia', serif;
+    background: linear-gradient(135deg,#e6dcf5,#d8c9f0);
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    height:100vh;
+    overflow:hidden;
 }
 
-/* -------- PÁGINA 1 -------- */
-.card {
-  background: rgba(255,255,255,0.96);
-  padding: 40px;
-  border-radius: 25px;
-  max-width: 90%;
-  text-align: center;
-  box-shadow: 0 25px 45px rgba(0,0,0,0.35);
-  animation: fadeIn 2s ease;
+/* Botón música */
+#musicBtn{
+    position:fixed;
+    top:20px;
+    left:50%;
+    transform:translateX(-50%);
+    padding:12px 25px;
+    background:#b9a7e6;
+    border:none;
+    border-radius:30px;
+    font-size:16px;
+    cursor:pointer;
+    transition:all 0.6s ease;
+    z-index:10;
+    color:white;
 }
 
-.name {
-  font-size: 28px;
-  font-weight: bold;
-  color: #4c1d95;
-  margin-bottom: 15px;
-  animation: glow 3s infinite;
+#musicBtn:hover{
+    background:#a18ed9;
 }
 
-@keyframes glow {
-  0% { transform: scale(1); text-shadow: 0 0 4px #c7b6ff; }
-  50% { transform: scale(1.07); text-shadow: 0 0 14px #6d28d9; }
-  100% { transform: scale(1); text-shadow: 0 0 4px #c7b6ff; }
+.fadeOut{
+    opacity:0;
+    transform:translateX(-50%) translateY(-20px);
 }
 
-p {
-  font-size: 17px;
-  color: #444;
-  line-height: 1.7;
+/* Carta */
+.card{
+    background:#f3ecff;
+    width:90%;
+    max-width:500px;
+    padding:40px 30px;
+    border-radius:20px;
+    box-shadow:0 15px 40px rgba(0,0,0,0.15);
+    text-align:center;
+    animation:fadeIn 2s ease;
 }
 
-.heart {
-  font-size: 52px;
-  margin: 20px 0;
-  animation: beat 1.2s infinite;
+h1{
+    color:#7b6ab3;
 }
 
-@keyframes beat {
-  0%,100% { transform: scale(1); }
-  50% { transform: scale(1.2); }
+p{
+    color:#5e537f;
+    font-size:18px;
+    line-height:1.6;
 }
 
-.buttons {
-  margin-top: 25px;
-  position: relative;
-  height: 90px;
+/* Botones */
+.buttons{
+    margin-top:30px;
+    position:relative;
 }
 
-button {
-  padding: 14px 28px;
-  font-size: 16px;
-  border-radius: 30px;
-  border: none;
-  cursor: pointer;
-  transition: all 0.3s ease;
+button{
+    padding:10px 20px;
+    margin:10px;
+    font-size:16px;
+    border:none;
+    border-radius:20px;
+    cursor:pointer;
+    transition:0.3s;
 }
 
-#yes {
-  background: #6d28d9;
-  color: white;
+#yesBtn{
+    background:#9f8bd8;
+    color:white;
 }
 
-#no {
-  background: #d1d5db;
-  position: absolute;
+#yesBtn:hover{
+    background:#8672c6;
 }
 
-#musicBtn {
-  margin-top: 25px;
-  background: #5b21b6;
-  color: white;
+#noBtn{
+    background:#999;
+    color:white;
+    position:absolute;
 }
 
-/* -------- PÁGINA 2 -------- */
-.final-page {
-  display: none;
-  text-align: center;
-  animation: fadeIn 2s ease;
+/* Segunda vista */
+.thankyou{
+    display:none;
+    text-align:center;
+    animation:fadeIn 2s ease;
 }
 
-/* 🔥 TODO BLANCO */
-.final-page,
-.final-page p,
-.final-name {
-  color: #ffffff;
+@keyframes fadeIn{
+    from{opacity:0; transform:translateY(20px);}
+    to{opacity:1; transform:translateY(0);}
 }
 
-.final-name {
-  font-size: 34px;
-  font-weight: bold;
-  animation: glow 3s infinite;
-}
-
-.final-page p {
-  font-size: 20px;
-  margin-top: 20px;
-  line-height: 1.6;
-}
-
-@keyframes fadeIn {
-  from { opacity: 0; transform: translateY(35px); }
-  to { opacity: 1; transform: translateY(0); }
+/* Responsive */
+@media(max-width:600px){
+    .card{
+        padding:30px 20px;
+    }
+    p{
+        font-size:16px;
+    }
 }
 </style>
 </head>
-
 <body>
 
-<audio id="music" loop>
-  <source src="musica.mp3" type="audio/mpeg">
-</audio>
+<button id="musicBtn">🎵 Reproducir música</button>
 
-<!-- 💌 PÁGINA 1 -->
-<div class="card" id="page1">
+<audio id="musica" src="musica.mp3" loop></audio>
 
-  <div class="name">
-    Sofia 🥹💘😻<br>
-    <span style="font-size:18px;">(Mi Niña Hermosa) 💘</span>
-  </div>
-
-  <p>
-    Desde que llegaste a mi vida, has sido mi calma, has sido ese rayito de luz en medio de esta tormenta, has sido la niña que se ha ganado mi corazoncito, eres la mujer por la que moveria cielo, mar y tierra, y es que estas dentro de mi cabeza como un tatuaje, cada cosa que hago me recuerda a ti, cada lugar al que voy me imagino estando contigo, cada noche abrazo mi almohada esperando que seas tu, tus caricias, tu linda voz, tu linda carita, todo lo que me encanta de ti, y es que tu.... parece que estas hecha de todo aquello que me vuelve loco, tu carita, tus ojitosssssss sabes que como me encantan, tu sonrisa, tu cuerpo, por que hasta lo que a ti no te gusta a mi me encanta, hasta lo que tu vez como defectos para mi son perfectos, todo me gusta de ti mi niña linda es lo que me fascina y me tiene loco por ti, podria hacerte miles de cartitas diciendo cuanto te quiero y te amo, podria hacerte todas las cartitas que tu quieres,
+<div class="card" id="mainCard">
+    <h1>Para mi niña hermosa 💘</h1>
+    <p>
+Desde que llegaste a mi vida, has sido mi calma, has sido ese rayito de luz en medio de esta tormenta, has sido la niña que se ha ganado mi corazoncito, eres la mujer por la que moveria cielo, mar y tierra, y es que estas dentro de mi cabeza como un tatuaje, cada cosa que hago me recuerda a ti, cada lugar al que voy me imagino estando contigo, cada noche abrazo mi almohada esperando que seas tu, tus caricias, tu linda voz, tu linda carita, todo lo que me encanta de ti, y es que tu.... parece que estas hecha de todo aquello que me vuelve loco, tu carita, tus ojitosssssss sabes que como me encantan, tu sonrisa, tu cuerpo, por que hasta lo que a ti no te gusta a mi me encanta, hasta lo que tu vez como defectos para mi son perfectos, todo me gusta de ti mi niña linda es lo que me fascina y me tiene loco por ti, podria hacerte miles de cartitas diciendo cuanto te quiero y te amo, podria hacerte todas las cartitas que tu quieres,
     todo se volvió más tranquilo,
     más bonito, más tú.
 A veces pienso que el mundo se ve diferente desde que existes tú. Como si todo tuviera más sentido, más color, más calma. Amarte no es algo que hago, es algo que demuestro… Si el tiempo me preguntara qué quiero conservar para siempre, no diría un momento, diría a ti. Te eligiria sobre todas las cosas. Eres todo lo que soñe y lo que un dia le pedi a Diosito, Gracias mi bebe hermosa.
-  </p>
+    </p>
 
-  <p>
-    Este San Valentín no quiero algo común,
-    quiero compartirlo contigo.
-  </p>
-
-  <div class="heart">💝</div>
-
-  <p><strong>¿Quieres ser mi San Valentín?</strong></p>
-
-  <div class="buttons">
-    <button id="yes" onclick="goToFinal()">Shiiii, nos casaremos y tendremos angelitos 💘💘💘</button>
-    <button id="no">No, te odio y tengo a otros 💔💔💔</button>
-  </div>
-
-  <button id="musicBtn" onclick="playMusic()">🎵 Reproducir música</button>
+    <div class="buttons">
+        <p><strong>¿Quieres ser mi San Valentín? 💌🌹</strong></p>
+        <button id="yesBtn">Sí 💘</button>
+        <button id="noBtn">No, te odio y tengo a otros 💔</button>
+    </div>
 </div>
 
-<!-- 💖 PÁGINA 2 -->
-<div class="final-page" id="page2">
-  <div class="final-name">
-    Mi princesita hermosa 💝<br>
-    <span style="font-size:20px;">Mi Niña Hermosa 🥹💘</span>
-  </div>
-
-  <p>
-    Gracias por decir que sí, obvio tenias que decir que si, eres solo miaaaa. <br>
+<div class="card thankyou" id="thankYouCard">
+    <h1>Mi niña hermosa 💞</h1><br>
+Mi Princesita hermosa 💌💝💘
+    <p>
+        Gracias por decir que sí, obvio tenias que decir que si, eres solo miaaaa. <br>
     Prometo cuidarte, respetarte, y valorarte por quien eres.<br>
-    y elegirte incluso en los días tranquilos, solo te necesito a ti, y espero que estemos juntitos mucho tiempo mas.<br>
-    Te amo mi nucita hermosa, mi bomboncito.
-  </p>
-
-  <div class="heart">💘🥹💝</div>
-
-  <p><strong>Feliz Primer San Valentín, mi amorcita linda.</strong></p>
+    y elegirte incluso en los días mas dificiles y en los mas tranquilos, solo te necesito a ti, y espero que estemos juntitos mucho tiempo mas.<br>
+    Te amo mi nucita hermosa, mi bomboncito.<br>
+Perdóname si este san Valentín fue tan malo y tan raro para ambos, me hubiera gustado estar contigo, y quizás haberte dado algo o haber salido, pero esperemos el próximo lo pasemos juntitos mi niña hermosa y si todo nos sale como lo estamos planeando, con la aprobación de tu mami, feliz San Valentín mi niña hermosa te amo mucho
+<br><br>
+        💝🥹💌💘
+    </p>
 </div>
 
 <script>
-const noBtn = document.getElementById("no");
+const musicBtn = document.getElementById("musicBtn");
+const musica = document.getElementById("musica");
 
-function moveButton() {
-  const x = Math.random() * 240 - 120;
-  const y = Math.random() * 140 - 70;
-  noBtn.style.transform = `translate(${x}px, ${y}px)`;
-}
-
-noBtn.addEventListener("mouseover", moveButton);
-noBtn.addEventListener("touchstart", (e) => {
-  e.preventDefault();
-  moveButton();
+musicBtn.addEventListener("click", () => {
+    musica.play();
+    musicBtn.classList.add("fadeOut");
+    setTimeout(()=> {
+        musicBtn.style.display="none";
+    },600);
 });
 
-function playMusic() {
-  document.getElementById("music").play();
-  document.getElementById("musicBtn").style.display = "none";
-}
+const noBtn = document.getElementById("noBtn");
 
-function goToFinal() {
-  document.getElementById("page1").style.display = "none";
-  document.body.style.background =
-    "linear-gradient(135deg, #1e0936, #3b0a75)";
-  document.getElementById("page2").style.display = "block";
-}
+noBtn.addEventListener("mouseover", () => {
+    const x = Math.random() * 200 - 100;
+    const y = Math.random() * 100 - 50;
+    noBtn.style.transform = `translate(${x}px, ${y}px)`;
+});
+
+const yesBtn = document.getElementById("yesBtn");
+const mainCard = document.getElementById("mainCard");
+const thankYouCard = document.getElementById("thankYouCard");
+
+yesBtn.addEventListener("click", () => {
+    mainCard.style.display="none";
+    thankYouCard.style.display="block";
+});
 </script>
 
 </body>
