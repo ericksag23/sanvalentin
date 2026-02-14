@@ -3,186 +3,257 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Para mi mujercita hermosa💝</title>
+<title>Para Mi Niña Hermosa 💝</title>
 
 <style>
-body{
-    margin:0;
-    font-family: 'Georgia', serif;
-    background: linear-gradient(135deg,#e6dcf5,#d8c9f0);
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    height:100vh;
-    overflow:hidden;
+*{
+    box-sizing:border-box;
 }
 
-/* Botón música */
-#musicBtn{
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    margin:0;
+    font-family:'Segoe UI',sans-serif;
+    background:linear-gradient(to bottom,#240046,#5a189a,#7b2cbf);
+    color:white;
+    text-align:center;
+    overflow-x:hidden;
+}
+
+/* BOTON MUSICA */
+header{
     position:fixed;
-    top:20px;
-    left:50%;
-    transform:translateX(-50%);
-    padding:12px 25px;
-    background:#b9a7e6;
+    top:0;
+    width:100%;
+    padding:15px;
+    background:rgba(0,0,0,0.25);
+    backdrop-filter:blur(10px);
+    z-index:1000;
+}
+
+#musicBtn{
+    background:#c77dff;
     border:none;
+    padding:12px 25px;
     border-radius:30px;
     font-size:16px;
     cursor:pointer;
-    transition:all 0.6s ease;
-    z-index:10;
     color:white;
+    transition:all 0.6s ease;
 }
 
 #musicBtn:hover{
-    background:#a18ed9;
+    background:#9d4edd;
+    transform:scale(1.1);
 }
 
 .fadeOut{
     opacity:0;
-    transform:translateX(-50%) translateY(-20px);
+    transform:translateY(-20px);
 }
 
-/* Carta */
+/* SECCIONES */
+.section{
+    min-height:100vh;
+    padding:130px 20px 80px 20px;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    flex-direction:column;
+}
+
 .card{
-    background:#f3ecff;
-    width:90%;
-    max-width:500px;
-    padding:40px 30px;
-    border-radius:20px;
-    box-shadow:0 15px 40px rgba(0,0,0,0.15);
-    text-align:center;
-    animation:fadeIn 2s ease;
+    background:white;
+    color:#4b0082;
+    max-width:650px;
+    padding:40px;
+    border-radius:30px;
+    box-shadow:0 0 30px rgba(0,0,0,0.4);
+    animation:fadeIn 1.8s ease;
 }
 
 h1{
-    color:#7b6ab3;
+    font-size:2.4em;
 }
 
 p{
-    color:#5e537f;
-    font-size:18px;
-    line-height:1.6;
+    line-height:1.8em;
+    font-size:1.1em;
 }
 
-/* Botones */
+@keyframes fadeIn{
+    from{opacity:0; transform:translateY(40px);}
+    to{opacity:1; transform:translateY(0);}
+}
+
+/* BOTONES */
 .buttons{
-    margin-top:30px;
+    margin-top:40px;
     position:relative;
+    height:80px;
 }
 
 button{
-    padding:10px 20px;
-    margin:10px;
-    font-size:16px;
+    padding:12px 30px;
     border:none;
-    border-radius:20px;
+    border-radius:30px;
+    font-size:16px;
     cursor:pointer;
+    margin:10px;
     transition:0.3s;
 }
 
-#yesBtn{
-    background:#9f8bd8;
+#yes{
+    background:#7b2cbf;
     color:white;
 }
 
-#yesBtn:hover{
-    background:#8672c6;
+#yes:hover{
+    background:#5a189a;
+    transform:scale(1.1);
 }
 
-#noBtn{
-    background:#999;
+#no{
+    background:#ff4d6d;
     color:white;
     position:absolute;
 }
 
-/* Segunda vista */
-.thankyou{
+/* SEGUNDA PAGINA */
+#page2{
     display:none;
-    text-align:center;
-    animation:fadeIn 2s ease;
+    animation:fadeIn 1.5s ease;
 }
 
-@keyframes fadeIn{
-    from{opacity:0; transform:translateY(20px);}
-    to{opacity:1; transform:translateY(0);}
+/* CORAZONES */
+.hearts{
+    position:fixed;
+    width:100%;
+    height:100%;
+    top:0;
+    left:0;
+    pointer-events:none;
+    overflow:hidden;
 }
 
-/* Responsive */
-@media(max-width:600px){
+.heart{
+    position:absolute;
+    bottom:-20px;
+    animation:floatUp linear infinite;
+}
+
+@keyframes floatUp{
+    from{transform:translateY(0); opacity:1;}
+    to{transform:translateY(-110vh); opacity:0;}
+}
+
+/* RESPONSIVE */
+@media(max-width:768px){
     .card{
-        padding:30px 20px;
+        padding:25px;
     }
-    p{
-        font-size:16px;
+    h1{
+        font-size:1.8em;
     }
 }
 </style>
 </head>
 <body>
 
-<button id="musicBtn">🎵 Reproducir música</button>
+<header>
+    <button id="musicBtn">💝 Reproducir canción</button>
+</header>
 
-<audio id="musica" src="musica.mp3" loop></audio>
+<audio id="bgMusic" loop>
+    <source src="musica.mp3" type="audio/mpeg">
+</audio>
 
-<div class="card" id="mainCard">
-    <h1>Para mi niña hermosa 💘</h1>
-    <p>
-Desde que llegaste a mi vida, has sido mi calma, has sido ese rayito de luz en medio de esta tormenta, has sido la niña que se ha ganado mi corazoncito, eres la mujer por la que moveria cielo, mar y tierra, y es que estas dentro de mi cabeza como un tatuaje, cada cosa que hago me recuerda a ti, cada lugar al que voy me imagino estando contigo, cada noche abrazo mi almohada esperando que seas tu, tus caricias, tu linda voz, tu linda carita, todo lo que me encanta de ti, y es que tu.... parece que estas hecha de todo aquello que me vuelve loco, tu carita, tus ojitosssssss sabes que como me encantan, tu sonrisa, tu cuerpo, por que hasta lo que a ti no te gusta a mi me encanta, hasta lo que tu vez como defectos para mi son perfectos, todo me gusta de ti mi niña linda es lo que me fascina y me tiene loco por ti, podria hacerte miles de cartitas diciendo cuanto te quiero y te amo, podria hacerte todas las cartitas que tu quieres,
+<div class="hearts"></div>
+
+<!-- PRIMERA PAGINA -->
+<div id="page1" class="section">
+    <div class="card">
+        <h1>💝 Mi Princesa Hermosa 💝</h1>
+
+        <p>
+      Desde que llegaste a mi vida, has sido mi calma, has sido ese rayito de luz en medio de esta tormenta, has sido la niña que se ha ganado mi corazoncito, eres la mujer por la que moveria cielo, mar y tierra, y es que estas dentro de mi cabeza como un tatuaje, cada cosa que hago me recuerda a ti, cada lugar al que voy me imagino estando contigo, cada noche abrazo mi almohada esperando e imaginando que seas tu, tus caricias, tu linda voz, tu linda carita, todo lo que me encanta de ti, y es que tu.... parece que estas hecha de todo aquello que me vuelve loco, tu carita, tus ojitosssssss sabes que como me encantan, tu sonrisa, tu cuerpo, por que hasta lo que a ti no te gusta a mi me encanta, hasta lo que tu vez como defectos para mi son perfectos, todo me gusta de ti mi niña linda es lo que me fascina y me tiene loco por ti, podria hacerte miles de cartitas diciendo cuanto te quiero y te amo, podria hacerte todas las cartitas que tu quieres,
     todo se volvió más tranquilo,
     más bonito, más tú.
 A veces pienso que el mundo se ve diferente desde que existes tú. Como si todo tuviera más sentido, más color, más calma. Amarte no es algo que hago, es algo que demuestro… Si el tiempo me preguntara qué quiero conservar para siempre, no diría un momento, diría a ti. Te eligiria sobre todas las cosas. Eres todo lo que soñe y lo que un dia le pedi a Diosito, Gracias mi bebe hermosa.
-    </p>
+        </p>
 
-    <div class="buttons">
-        <p><strong>¿Quieres ser mi San Valentín? 💌🌹</strong></p>
-        <button id="yesBtn">Sí 💘</button>
-        <button id="noBtn">No, te odio y tengo a otros 💔</button>
+Ahora te pregunto...
+ </p>
+
+        <h2>¿Quieres ser mi San Valentín? 💍💝💌</h2>
+
+        <div class="buttons">
+            <button id="yes">SHIII 💝💘</button>
+            <button id="no">NO, TENGO A OTROS Y TE ODIO 💔💔</button>
+        </div>
     </div>
 </div>
 
-<div class="card thankyou" id="thankYouCard">
-    <h1>Mi niña hermosa 💞</h1><br>
-Mi Princesita hermosa 💌💝💘
-    <p>
+<!-- SEGUNDA PAGINA -->
+<div id="page2" class="section">
+    <div class="card">
+        <h1>SHII MI PRINCESA HERMOSA, BELLA, DIVINA 💝</h1>
+        <p>
         Gracias por decir que sí, obvio tenias que decir que si, eres solo miaaaa. <br>
     Prometo cuidarte, respetarte, y valorarte por quien eres.<br>
     y elegirte incluso en los días mas dificiles y en los mas tranquilos, solo te necesito a ti, y espero que estemos juntitos mucho tiempo mas.<br>
     Te amo mi nucita hermosa, mi bomboncito.<br>
-Perdóname si este san Valentín fue tan malo y tan raro para ambos, me hubiera gustado estar contigo, y quizás haberte dado algo o haber salido, pero esperemos el próximo lo pasemos juntitos mi niña hermosa y si todo nos sale como lo estamos planeando, con la aprobación de tu mami, feliz San Valentín mi niña hermosa te amo mucho
-<br><br>
-        💝🥹💌💘
-    </p>
+Perdóname si este san Valentín fue tan malo y tan raro para ambos, me hubiera gustado estar contigo, y quizás haberte dado algo o haber salido contigo, pero esperemos el próximo lo pasemos juntitos mi niña hermosa y si todo nos sale como lo estamos planeando, con la aprobación de tu mami, seremos muy felices,  feliz San Valentín mi niña hermosa te amo muchooo
+
+        <p>
+        Que este sea solo el comienzo  
+        de miles de momentos hermosos juntos. 💍💌💘
+        </p>
+        <h2>Te amo infinitamente 💖</h2>
+<h2>Atentamente, Tu Marido, Tu hombre, Tu Esposo, Tu amorcito, Tu niño, Tu bebeshito, Tu nene, Tu cielo, tu luz, Tu quemadito, Tu amigo, Tu amiguito, Tu mejor amigo, Tu papacito hermoso, Tu papito bello, Tu lugar seguro y favorito, Tu vida, Tu alma, Tu todo.
+ 💝</h2>
+    </div>
 </div>
 
 <script>
 const musicBtn = document.getElementById("musicBtn");
-const musica = document.getElementById("musica");
+const music = document.getElementById("bgMusic");
 
 musicBtn.addEventListener("click", () => {
-    musica.play();
+    music.play();
     musicBtn.classList.add("fadeOut");
-    setTimeout(()=> {
-        musicBtn.style.display="none";
-    },600);
+    setTimeout(()=> musicBtn.style.display="none",600);
 });
 
-const noBtn = document.getElementById("noBtn");
+const noBtn = document.getElementById("no");
 
 noBtn.addEventListener("mouseover", () => {
     const x = Math.random() * 200 - 100;
-    const y = Math.random() * 100 - 50;
+    const y = Math.random() * 200 - 100;
     noBtn.style.transform = `translate(${x}px, ${y}px)`;
 });
 
-const yesBtn = document.getElementById("yesBtn");
-const mainCard = document.getElementById("mainCard");
-const thankYouCard = document.getElementById("thankYouCard");
-
-yesBtn.addEventListener("click", () => {
-    mainCard.style.display="none";
-    thankYouCard.style.display="block";
+document.getElementById("yes").addEventListener("click", () => {
+    document.getElementById("page1").style.display="none";
+    document.getElementById("page2").style.display="flex";
+    window.scrollTo({top:0, behavior:"smooth"});
 });
+
+/* CORAZONES */
+function createHearts(){
+    const heart = document.createElement("div");
+    heart.classList.add("heart");
+    heart.innerHTML="💝";
+    heart.style.left=Math.random()*100+"vw";
+    heart.style.fontSize=(Math.random()*25+15)+"px";
+    heart.style.animationDuration=(Math.random()*3+4)+"s";
+    document.querySelector(".hearts").appendChild(heart);
+    setTimeout(()=>heart.remove(),7000);
+}
+setInterval(createHearts,500);
 </script>
 
 </body>
